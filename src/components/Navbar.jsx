@@ -5,19 +5,41 @@ import { MdOutlineMenu } from "react-icons/md";
 import NavLink from './NavLink';
 import { afterLoginNavData, beforeLoginNavData } from '@/data/navData';
 import useTheme from '@/hooks/useTheme';
+import useAuth from '@/hooks/useAuth';
+import toast from 'react-hot-toast';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Navbar = () => {
 
-  const user = null;
+  const {user, logOut} = useAuth();
+  // const {email} = user 
 
   const navData= user? afterLoginNavData : beforeLoginNavData;
   const {theme,toggleTheme} = useTheme()
   const [navToggle, setNavToggle] = useState(false);
+  const {replace} = useRouter()
+  const {path} = usePathname()
 
   const handleMenuToggle = () => {
     console.log('Toggle menu');
     setNavToggle(!navToggle);
   };
+
+  const handleLogOut = async() =>{
+    try {
+      await logOut()
+      const res = await fetch("/api/auth/logout",{
+        method:"POST"
+      })
+      const data = await res.json()
+      toast.success('Successfully toasted!')
+      if(path.includes("/dashboard") || path.includes("/about")){
+        replace("/")
+      }
+    } catch (error) {
+      
+    }
+  }
 
     return (
         <div className="navbar bg-neutral text-neutral-content">
@@ -49,25 +71,36 @@ const Navbar = () => {
             </div>
           </div>
           <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" onClick={handleMenuToggle} className="btn btn-ghost">
-              <div className="w-10">
-              <MdOutlineMenu className='text-2xl'/>
-              </div>
+          <div tabIndex={0} role="button" onClick={handleMenuToggle} className="btn btn-ghost">
+            <div className="w-8">
+            <MdOutlineMenu className='text-2xl'/>
             </div>
-           {
-            navToggle &&
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10">
-            {
-             navData.map(({path,title})=>(
-               <li key={path} className='mx-auto'>
-                  <NavLink activeClassName="text-blue-500" href={path}>{title}</NavLink>
-               </li>
-             ))
-            }
-           </ul>
-           }
-            
           </div>
+         {
+          navToggle &&
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10">
+          {
+           navData.map(({path,title})=>(
+             <li key={path} className='mx-auto'>
+                <NavLink activeClassName="text-blue-500" href={path}>{title}</NavLink>
+             </li>
+           ))
+          }
+          {user && <li> <button onClick={handleLogOut} className="btn btn-sm btn-warning">Log out</button></li>}
+         </ul>
+         }
+        </div>
+        {/* {user&&<li><div className="avatar">
+  <div className="w-10 mr-2 rounded-full">
+  <Image
+      src={photoURL}
+      width={500}
+      height={500}
+      alt="Picture of the author"
+    />
+  </div>
+</div></li>} */}
+       
           <label className="swap swap-rotate">
   
   {/* this hidden checkbox controls the state */}
