@@ -1,0 +1,22 @@
+[
+  {
+    "category_id":"101",
+    "name":"Clothes",
+    "image":"https://i.ibb.co/L95W9sx/Clothes.jpg"
+  },   
+  {
+    "category_id":"102",
+    "name":"Phones",
+    "image":"https://i.ibb.co/BjPQbY0/Phones.jpg"
+  },   
+  {
+    "category_id":"103",
+    "name":"Daily Products",
+    "image":"https://i.ibb.co/w03C6f4/Daily-Products.jpg"
+  },   
+  {
+    "category_id":"104",
+    "name":"Baby Toyes",
+    "image":"https://i.ibb.co/0XsRvcf/Baby-Toyes.jpg"
+  }   
+]
