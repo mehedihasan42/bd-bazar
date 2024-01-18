@@ -1,22 +1,37 @@
 [
   {
     "category_id":"101",
-    "name":"Clothes",
-    "image":"https://i.ibb.co/L95W9sx/Clothes.jpg"
-  },   
+    "name":"Hudi",
+    "image":"https://i.ibb.co/rbzY8vt/9417dcd59de8993f078e00f10273ad93-jpg-750x400-jpg.webp"
+  },
+  {
+    "category_id":"101",
+    "name":"Black Hudi",
+    "image":"https://i.ibb.co/sghGCBJ/51-Jc8-Cv0cc-L-AC-UY1100.jpg"
+  },
   {
     "category_id":"102",
-    "name":"Phones",
+    "name":"I phone-X",
     "image":"https://i.ibb.co/BjPQbY0/Phones.jpg"
-  },   
+  },
+  {
+    "category_id":"102",
+    "name":"I phone-12",
+    "image":"https://i.ibb.co/N6zBYWj/photo-1603816245457-fe9c80b740ff.jpg"
+  },
   {
     "category_id":"103",
-    "name":"Daily Products",
-    "image":"https://i.ibb.co/w03C6f4/Daily-Products.jpg"
-  },   
+    "name":"Sosa",
+    "image":"https://i.ibb.co/dBJ0GbK/sosa.jpg"
+  },
+  {
+    "category_id":"103",
+    "name":"Pomegranate Fruit",
+    "image":"https://i.ibb.co/Y0VRfW0/Anar.jpg"
+  },
   {
     "category_id":"104",
-    "name":"Baby Toyes",
-    "image":"https://i.ibb.co/0XsRvcf/Baby-Toyes.jpg"
-  }   
+    "name":"Taddy",
+    "image":"https://media.istockphoto.com/id/167154546/photo/cute-teddy-bear-isolated-on-white-background.jpg?s=2048x2048&w=is&k=20&c=ecZbvDgOAg4T624CWRcgHxoOcTJ3IL8nia_vGBcWpjc="
+  }
 ]
