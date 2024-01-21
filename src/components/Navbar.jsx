@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { MdOutlineMenu } from "react-icons/md";
 import NavLink from './NavLink';
 import { afterLoginNavData, beforeLoginNavData } from '@/data/navData';
@@ -8,6 +8,7 @@ import useTheme from '@/hooks/useTheme';
 import useAuth from '@/hooks/useAuth';
 import toast from 'react-hot-toast';
 import { usePathname, useRouter } from 'next/navigation';
+import useCart from '@/hooks/useCart';
 
 const Navbar = () => {
 
@@ -17,6 +18,11 @@ const Navbar = () => {
   const navData= user? afterLoginNavData : beforeLoginNavData;
   const {theme,toggleTheme} = useTheme()
   const [navToggle, setNavToggle] = useState(false);
+  const {cart} = useCart()
+  const total = useMemo(
+    ()=> cart.reduce((pre,cur)=>cur.price * cur.quantity + pre,0),[cart]
+  )
+
   const {replace} = useRouter()
   const {path} = usePathname()
 
@@ -62,8 +68,8 @@ const Navbar = () => {
             </div>
             <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
               <div className="card-body">
-                <span className="font-bold text-lg">8 Items</span>
-                <span className="text-info">Subtotal: $999</span>
+                <span className="font-bold text-lg">{cart.length}</span>
+                <span className="text-info">Subtotal: {total}</span>
                 <div className="card-actions">
                   <button className="btn btn-primary btn-block">View cart</button>
                 </div>
