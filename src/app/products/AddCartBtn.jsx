@@ -30,7 +30,6 @@ const AddCartBtn = ({id}) => {
          onClick={()=>handleAddToCart(id)}
          disabled={isAlready !== -1 || isLoading}
          >
-            Add To Cart 
             {isAlready !== -1?"Already added":"Add to cart"}
         </button>
     );

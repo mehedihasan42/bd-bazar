@@ -54,7 +54,7 @@ export const POST = async(request) =>{
         else{
             cart[id] = 1;
         }
-        console.log(cart)
+        console.log('cart id',cart)
         cookie.get({
             name:"cart",
             value:JSON.stringify(cart),
